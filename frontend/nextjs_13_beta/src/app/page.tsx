@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Page() {
   return (
 <>
-  <main className={styles.main}>
+  <main className={"main-container " + styles.main}>
     <h1 className={styles.main_copy}>
       For All Wasm Contract Lovers
     </h1>
@@ -19,7 +19,7 @@ export default function Page() {
       width="500"
       height="334"
     />
-    <Link className={styles.connect_wallet} href="/top/">
+    <Link className={"btn " + styles.connect_wallet} href="/messages/">
       <span>Connect Wallet</span>
     </Link>
   </main>

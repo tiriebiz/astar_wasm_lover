@@ -1,0 +1,51 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(/assets/common/img/wasm-landscape.b8a6e86e.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  &:before {
+    content: "";
+    position: absolute;
+    background-color: rgba(255,255,255, 0.9);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    @media #{$phone}{
+      height: 80vh;
+    }
+  }
+  @media #{$phone}{
+    height: 80vh;
+  }
+}
+
+.btn {
+  z-index: 1;
+  position: relative;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 1px solid #0070eb;
+  background: linear-gradient(120deg,#ffebf6 -5.88%,#ebdeff 15.42%,#d3e8ff 40.77%,#bee5ff 72.21%,#bef7ff 95.53%);
+  &:hover {
+    background: linear-gradient(120deg,#e6007a -5.88%,#703ac2 15.42%,#0070eb 40.77%,#0297fb 72.21%,#0ae2ff 95.53%);
+    span {
+      color: #fff;
+    }
+  }
+  span {
+    font-weight: bold;
+    font-size: 2rem;
+    color: rgb(0, 153, 255);
+  }
+}
+.pc-only {
+  @media #{$phone}{
+    display: none;
+  }
+}
