@@ -1,0 +1,471 @@
+@charset "utf-8";
+//------------------------------------
+// 全体
+//------------------------------------
+/* --------------------------------------------------
+	000.margin and padding
+-------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li,
+h1, h2, h3, h4, h5, h6,
+object, iframe, pre, code, p, blockquote,
+form, fieldset, legend,
+table, th, td, caption, tbody, tfoot, thead,
+article, aside, figure, footer, header,
+hgroup, menu, nav, section, audio, video, canvas, main {
+	margin: 0;
+	padding: 0;
+}
+
+article, aside, figure, figcaption, footer,
+h1, h2, h3, h4, h5, h6, header, hgroup, menu, nav, section, main {
+	display: block;
+}
+
+* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+/* --------------------------------------------------
+	001.HTML, Body, Anchor
+-------------------------------------------------- */
+
+html {
+	font-size: 62.5%;
+}
+
+html, body {
+	width:100%;
+	min-height:100%;
+}
+
+body {
+	font-family: $font-family;
+	font-size: 10px;
+	font-size: $fontsize-base;
+	background: #fff;
+	line-height: 1.5;
+	color: $base;
+	letter-spacing: .3rem;
+	font-weight: 300;
+}
+@media #{$desktop}{
+	.sp-visible {
+		display: none !important;
+	}
+	.tablet-visible {
+		display: none !important;
+	}
+}
+@media #{$tablet}{
+	.tablet-hidden {
+		display: none;
+	}
+	.sp-visible {
+		display: none !important;
+	}
+	@media #{$phone}{
+		.sp-visible {
+			display: block !important;
+		}
+	}
+}
+@media #{$phone}{
+	html {
+		font-size: 3.125vw;
+	}
+	body {
+		letter-spacing: 0;
+	}
+	.sp-hidden {
+		display: none !important;;
+	}
+	select ,
+	textarea ,
+	input[type='url'],
+	input[type='text'],
+	input[type='date'],
+	input[type='tel'],
+	input[type='email'],
+	input[type='submit'] {
+		-webkit-appearance: none;
+	}
+}
+span.link ,
+a {
+	color: $base;
+	text-decoration: none;
+	transition: all 0.5s;
+	cursor: pointer;
+}
+@media #{$desktop}{
+	a:hover,a:focus, a:active {
+		color: $base;
+		text-decoration: none;
+		opacity: 0.8;
+	}
+}
+@media #{$tablet}{
+	#wrap {
+		overflow: hidden;
+	}
+}
+
+/* --------------------------------------------------
+	002.Heading, Paragraph
+-------------------------------------------------- */
+dt , h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: 400;
+}
+
+p {
+	line-height: 1.5;
+}
+
+/* --------------------------------------------------
+	003.List
+-------------------------------------------------- */
+ol , ul , li {
+	list-style: none;
+	zoom: 1;
+	overflow: hidden;
+}
+
+/* --------------------------------------------------
+	004.Table
+-------------------------------------------------- */
+table {
+	font-size: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	vertical-align: top;
+	font-weight: 400;
+}
+dl, dt, dd {
+	zoom: 1;
+	overflow: hidden;
+}
+
+/* --------------------------------------------------
+	005.Form
+-------------------------------------------------- */
+fieldset {
+	border: none;
+}
+input, textarea, select, label {
+	font-size: 1.6rem;
+	font-weight: 300;
+	font-family: $font-family;
+	vertical-align: middle;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+@media #{$phone}{
+	input, textarea, select {
+		box-sizing: border-box;
+	}
+	label {
+		font-size: 1.4rem;
+	}
+}
+button {
+	font-family: $font-family;
+}
+label {
+	cursor: pointer;
+}
+textarea {
+	overflow: auto;
+}
+legend {
+	display: none;
+}
+
+/* --------------------------------------------------
+	006.Other
+-------------------------------------------------- */
+img {
+	max-width: 100%;
+	border: none;
+	vertical-align: middle;
+}
+object {
+	vertical-align: middle;
+	outline: none;
+}
+em {
+	font-style: italic;
+}
+b,
+strong {
+	font-weight: 400;
+}
+small {
+	font-size: 100%;
+}
+i {
+	font-style: normal;
+}
+u {
+	text-decoration: none;
+}
+abbr, acronym {
+	border: none;
+	font-variant: normal;
+}
+address, caption, cite, code, dfn, var {
+	font-weight: normal;
+	font-style: normal;
+}
+sup {
+	font-size: 1em;
+	vertical-align: text-top;
+}
+sub {
+	font-size: 1em;
+	vertical-align: text-bottom;
+}
+hr {
+	display: none;
+}
+
+/* --------------------------------------
+		101 outline
+-------------------------------------- */
+#wrap {
+	position: relative;
+}
+div:focus ,
+img:focus ,
+textarea:focus ,
+a:focus ,
+button:focus ,
+input:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+
+/* --------------------------------------
+		105 other
+-------------------------------------- */
+.edita {
+	&:after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+	img {
+		height: auto;
+	}
+	p {
+		padding-bottom: 1.5em;
+	}
+	h1 {
+		font-size: 2.0em;
+		margin: 1em 0 1.5em;
+	}
+	h2 {
+		font-size: 1.8em;
+		margin: 1em 0 1.5em;
+	}
+	h3 {
+		font-size: 1.65em;
+		margin: 1em 0 1.5em;
+		border-bottom: .3rem solid rgba($base,0.2);
+		padding: .5em;
+	}
+	h4 {
+		font-size: 1.55em;
+		margin: 1em 0 1.5em;
+		border-left: .5rem solid rgba($base,0.2);
+		padding-left: 1rem;
+	}
+	h5 {
+		font-size: 1.4em;
+		margin: 1em 0 1.5em;
+		border-bottom: .1rem dashed rgba($base,0.2);
+		padding: .5em;
+	}
+	h6 {
+		font-size: 1.3em;
+		margin: 1em 0 1.5em;
+		background: rgba($base,0.05);
+		color: #666;
+		padding: .8em 1.2em;
+	}
+	@media #{$phone}{
+		h1 {
+			font-size: 1.5em;
+		}
+		h2 {
+			font-size: 1.4em;
+		}
+		h3 {
+			font-size: 1.3em;
+		}
+		h4 {
+			font-size: 1.2em;
+		}
+		h5 {
+			font-size: 1.1em;
+		}
+		h6 {
+			font-size: 1em;
+		}
+	}
+	pre {
+		display: block;
+	}
+	strong {
+		font-weight: bold;
+	}
+	em {
+		font-style: italic;
+	}
+	ul {
+		margin-bottom: 2.5rem;
+		li {
+			list-style: outside disc;
+			margin-left: 3rem;
+			overflow: visible;
+			zoom: normal;
+			padding-bottom: 1rem;
+		}
+	}
+	ol {
+		margin-bottom: 2.5rem;
+		li {
+			list-style: outside decimal;
+			margin-left: 3rem;
+			overflow: visible;
+			zoom: normal;
+			padding-bottom: 1rem;
+		}
+	}
+	blockquote {
+		display: block;
+		margin: 1em 4rem;
+		position: relative;
+		&:before {
+			content: "“";
+			position: absolute;
+			left: -1em;
+			font-size: 4rem;
+			line-height: 1;
+			opacity: 0.5;
+			top: 0;
+		}
+		&:after {
+			content: "”";
+			position: absolute;
+			right: -1rem;
+			font-size: 4rem;
+			line-height: 1;
+			opacity: 0.5;
+			bottom: 0;
+		}
+	}
+	a {
+		color: #666;
+	}
+	del {
+		text-decoration: line-through;
+	}
+	hr {
+		display: block;
+		border: none;
+		border-top: #9a9a9a 1px solid;
+		border-bottom: #eeeeee 1px solid;
+		margin-bottom: 1rem;
+	}
+	.alignright {
+		float: right;
+		margin-left: 2rem;
+		margin-bottom: 2rem;
+		margin-right: .5rem;
+		@media #{$phone}{
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	.alignleft {
+		float: left;
+		margin-right: 2rem;
+		margin-left: .5rem;
+		margin-bottom: 2rem;
+		@media #{$phone}{
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+	.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 2rem;
+		width: 100%;
+		max-width: 64rem;
+	}
+}
+.form-select {
+	line-height: 4.8rem;
+	height: 5.2rem;
+	overflow: hidden;
+	background: #fff;
+	border-radius: .5rem;
+	border: none;
+	position: relative;
+	width: 100%;
+	&:after {
+		width: 2em;
+		height: 5rem;
+		font-size: 1.6rem;
+		line-height: 1;
+		font-family: 'icomoon';
+		text-align: center;
+		content: "\e904";
+		color: $bg;
+		top: 50%;
+		margin-top: -.5em;
+		right: 0;
+		position: absolute;
+	}
+	> select {
+		width: 130%;
+		font-size: 1.6rem;
+		line-height: 5rem;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		text-indent: 0.01px;
+		text-overflow: '';
+		border-radius: 0;
+		border: 0;
+		margin: 0;
+		padding: 0 3rem 0 5rem;
+		@media #{$phone}{
+			padding-left: 4rem;
+		}
+		background: transparent;
+		vertical-align: middle;
+		color: $bg;
+		box-sizing: content-box;
+		&::-ms-expand {
+		  display: none;
+		}
+		&:focus {
+			border: none;
+			outline: none;
+			box-shadow: none;
+		}
+	}
+}
