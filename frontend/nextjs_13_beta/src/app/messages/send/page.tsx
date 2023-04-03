@@ -11,7 +11,7 @@ export default function Page() {
   <main className={"main-container " + styles.main}>
     <nav>
       <Link className={"btn " + styles.back_to_top} href="/">
-        <span>Back<span className="pc-only"> to Top</span></span>
+        <span><span className="pc-only">Back to </span>Top</span>
       </Link>
       <h2 className={styles.main_copy}>
         For All Wasm Contract Lovers
