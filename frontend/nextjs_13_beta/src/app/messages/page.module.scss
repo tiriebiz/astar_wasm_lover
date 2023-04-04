@@ -43,9 +43,20 @@
   .article_list {
     z-index: 1;
     max-width: 80rem;
-    padding: 2rem;
+    width: 100%;
+    padding: 5rem 2rem 2rem;
+    position: relative;
+    .btn_right {
+      position: absolute;
+      top: 0;
+      right: 2rem;
+      span {
+        font-size: 1.3rem;
+      }
+    }
     article {
       display: flex;
+      width: 100%;
       padding: 1rem;
       margin-bottom: 2rem;
       background: #fff;
@@ -67,6 +78,7 @@
         .article_url_for_dapp {
           margin-top: 1rem;
           text-decoration: underline;
+          overflow-wrap: anywhere;
         }
       }
     }
