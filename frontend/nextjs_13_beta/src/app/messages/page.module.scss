@@ -57,7 +57,9 @@
         width: calc(100% - 3rem);
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
         .article_name {
+          font-weight: bold;
         }
         .article_message {
           margin-top: 1rem;
@@ -108,7 +110,15 @@
       }
       .submit_message {
         text-align: center;
-        
+      }
+      .disabled_submit_message {
+        text-align: center;
+        pointer-events: none;
+        background: #ddd;
+        border: none;
+        span {
+          color: #fff;
+        }
       }
     }
   }

@@ -1,4 +1,5 @@
 import './globals.scss'
+import { Providers } from './providers';
 
 export const metadata = {
   title: 'For All WASM Contract Lovers Astar Network',
@@ -11,8 +12,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+<html lang="en">
+  <body>
+    <Providers>
+      {children}
+    </Providers>
+  </body>
+</html>
   )
 }

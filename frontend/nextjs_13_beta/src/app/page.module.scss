@@ -24,4 +24,10 @@
   .connect_wallet {
     margin-top: 2rem;
   }
+  select {
+    margin-top: 2rem;
+    z-index: 1;
+    padding: 1rem;
+    border: 2px solid #ddd;
+  }
 }
