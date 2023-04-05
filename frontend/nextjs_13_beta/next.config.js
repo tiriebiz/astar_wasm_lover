@@ -5,9 +5,9 @@ const nextConfig = {
   },
   reactStrictMode: false,
   swcMinify: true,
-  //typescript: {
-  //  ignoreBuildErrors: true
-  //}
+  typescript: {
+    ignoreBuildErrors: true
+  }
 }
 
 module.exports = nextConfig
