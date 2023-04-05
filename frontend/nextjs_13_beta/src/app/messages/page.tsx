@@ -13,6 +13,7 @@ import { BN } from "@polkadot/util";
 
 import styles from './page.module.scss';
 import contractAbi from "../astar_wasm_lover.json";
+import NotConnected from '../components/notconnected';
 import { MyContext } from '../components/mycontext';
 import { LoverInfo } from '../components/loverinfo';
 
@@ -33,9 +34,9 @@ export default function Page() {
   //const router = useRouter();
   const mycontext = useContext(MyContext);
   if (!mycontext.actingAccount) {
-    //router.push("/");
-    //alert("Acting Account does not exist.");
-    return null;
+    return (
+      <NotConnected />
+    );
   }
   const buildArticles = async () => {
     const getGasLimitForNotDeploy = (api: any): any => {

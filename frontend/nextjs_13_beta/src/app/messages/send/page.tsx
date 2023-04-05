@@ -1,6 +1,7 @@
 'use client'
 
 import { useContext, useEffect, useState} from 'react';
+import nl2br from 'react-nl2br';
 
 //import { useRouter } from 'next/navigation'
 import Image from 'next/image'
@@ -13,6 +14,7 @@ import type { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
 
 import styles from '../page.module.scss'
 import contractAbi from "../../astar_wasm_lover.json";
+import NotConnected from '../../components/notconnected';
 import { MyContext } from '../../components/mycontext';
 import { LoverInfo } from '../../components/loverinfo';
 
@@ -22,6 +24,7 @@ const contractAddress = String(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS) ?? "";
 
 export default function Page() {
   const [canSubmit, setCanSubmit] = useState(false);
+  const [transactionStatus, setTransactionStatus] = useState(false);
   const [formInfo, setFormInfo] = useState<LoverInfo>({
     id: "",
     name: "",
@@ -39,9 +42,9 @@ export default function Page() {
   //const router = useRouter();
   const mycontext = useContext(MyContext);
   if (!mycontext.actingAccount) {
-    //router.push("/");
-    //alert("Acting Account does not exist.");
-    return null;
+    return (
+      <NotConnected />
+    );
   }
 
   const sendMessage = async (e: any) => {
@@ -92,14 +95,17 @@ export default function Page() {
         mycontext.actingAccount.address,
         { signer: injector.signer },
         ({ status, events = [] }) => {
+          console.log("### status", status);
+          setTransactionStatus("Transaction is Created.\n\nIt may take a few mintuies \nto finalize the transaction.");
           if (status.isFinalized) {
             events.forEach(({ event: { data } }) => {
               console.log("### data.methhod:", data.method);
               if (String(data.method) == "ExtrinsicFailed") {
-                console.log("### check ExtrinsicFailed");
-                //setStatusString("Transaction is failure");
+                console.log("### Failure.");
+                setTransactionStatus("Trancation is Faliure.");
               } else{
-                //setStatusString("Transaction is success");
+                console.log("### Success.");
+                setTransactionStatus("Transaction is Success.");
               }
             });
             
@@ -109,9 +115,6 @@ export default function Page() {
         }
       );
     }
-
-    router.push("/messages/");
-    return null;
   }
 
   const changeFormInfo = (e) => {
@@ -146,7 +149,10 @@ export default function Page() {
       </Link>
     </nav>
     <section className={styles.send_message_form}>
-      <form>
+      <p className={styles.transaction_status}>
+        { nl2br(transactionStatus) }
+      </p>
+      <form className={ transactionStatus ? styles.submitted : ""}>
         <div className={styles.form_group}>
           <p>Please submit your message for Wasm Launch.</p>
         </div>
