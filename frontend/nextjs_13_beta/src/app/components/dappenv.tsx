@@ -6,7 +6,7 @@ import { MyContext } from './mycontext';
 
 export default function DappEnv() {
   const mycontext = useContext(MyContext);
-  if (mycontext.blockchainUrl == 'wss://rpc.astar.network') {
+  if (!mycontext.blockchainUrl || mycontext.blockchainUrl == 'wss://rpc.astar.network') {
     return (
       <></>
     );

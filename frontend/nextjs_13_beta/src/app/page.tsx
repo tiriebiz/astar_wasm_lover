@@ -20,7 +20,6 @@ const blockchainUrl = String(process.env.NEXT_PUBLIC_BLOCK_CHAIN_URL) ?? "";
 export default function Page() {
   const router = useRouter();
   const mycontext = useContext(MyContext);
-  mycontext.blockchainUrl = blockchainUrl;
 
   // setUp実行完了後に、useEffectを実行して再度レンダリングしてほしい。
   const [connected, setConnected] = useState(false);
@@ -66,6 +65,12 @@ export default function Page() {
     // アカウントが複数ある場合は、再度レンダリングしてほしいので、stateを変更。
     setConnected(true);
   };
+
+  // DappEnvの初期表示
+  if (!mycontext.blockchainUrl) {
+    mycontext.blockchainUrl = blockchainUrl;
+    setConnected(false);
+  }
 
   return (
 <>
