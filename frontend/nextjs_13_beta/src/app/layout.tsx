@@ -1,5 +1,6 @@
 import './globals.scss'
 import { Providers } from './components/providers';
+import DappEnv from './components/dappenv';
 
 export const metadata = {
   title: 'For All WASM Contract Lovers Astar Network',
@@ -15,6 +16,7 @@ export default function RootLayout({
 <html lang="en">
   <body>
     <Providers>
+      <DappEnv />
       {children}
     </Providers>
     <footer className="disclaimer">
