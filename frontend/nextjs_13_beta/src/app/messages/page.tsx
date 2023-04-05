@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from 'react';
 import nl2br from 'react-nl2br';
 
-import { useRouter } from 'next/navigation'
+//import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
@@ -14,21 +14,13 @@ import { BN } from "@polkadot/util";
 import styles from './page.module.scss';
 import contractAbi from "../astar_wasm_lover.json";
 import { MyContext } from '../components/mycontext';
-import { LoverInfo } from '../../components/loverinfo';
+import { LoverInfo } from '../components/loverinfo';
 
 const inter = Inter({ subsets: ['latin'] })
 
 const contractAddress = String(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS) ?? "";
 
 export default function Page() {
-  // check acting address
-  const router = useRouter();
-  const mycontext = useContext(MyContext);
-  if (!mycontext.actingAccount) {
-    router.push("/");
-    return null;
-  }
-
   const [articles, setArticles] = useState<Array<LoverInfo>>([]);
   useEffect(() => {
     console.log("mycontext", mycontext);
@@ -36,6 +28,15 @@ export default function Page() {
     console.log("articles", articles);
   });
 
+
+  // check acting address
+  //const router = useRouter();
+  const mycontext = useContext(MyContext);
+  if (!mycontext.actingAccount) {
+    //router.push("/");
+    //alert("Acting Account does not exist.");
+    return null;
+  }
   const buildArticles = async () => {
     const getGasLimitForNotDeploy = (api: any): any => {
       const gasLimit: any = api.registry.createType("WeightV2", {
@@ -107,7 +108,7 @@ export default function Page() {
         <span>Get Latest</span>
       </button>
       {articles.map((a) => 
-      <article>
+      <article key={a.id}>
         <div className={styles.article_header}>
           <span>#{a.id}</span>
         </div>

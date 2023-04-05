@@ -1,5 +1,5 @@
 import './globals.scss'
-import { Providers } from './providers';
+import { Providers } from './components/providers';
 
 export const metadata = {
   title: 'For All WASM Contract Lovers Astar Network',

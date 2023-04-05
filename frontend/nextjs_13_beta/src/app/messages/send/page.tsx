@@ -2,7 +2,7 @@
 
 import { useContext, useEffect, useState} from 'react';
 
-import { useRouter } from 'next/navigation'
+//import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Inter } from 'next/font/google'
@@ -21,13 +21,6 @@ const inter = Inter({ subsets: ['latin'] })
 const contractAddress = String(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS) ?? "";
 
 export default function Page() {
-  const router = useRouter();
-  const mycontext = useContext(MyContext);
-  if (!mycontext.actingAccount) {
-    router.push("/");
-    return null;
-  }
-
   const [canSubmit, setCanSubmit] = useState(false);
   const [formInfo, setFormInfo] = useState<LoverInfo>({
     id: "",
@@ -43,7 +36,15 @@ export default function Page() {
     console.log("formInfo", formInfo);
   });
 
-  const sendMessage = async (e) => {
+  //const router = useRouter();
+  const mycontext = useContext(MyContext);
+  if (!mycontext.actingAccount) {
+    //router.push("/");
+    //alert("Acting Account does not exist.");
+    return null;
+  }
+
+  const sendMessage = async (e: any) => {
     console.log("## sendMessage 0");
 
     const storageDepositLimit = null;

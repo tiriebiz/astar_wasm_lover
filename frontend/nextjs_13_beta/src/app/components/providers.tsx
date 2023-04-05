@@ -1,6 +1,6 @@
 'use client';
 
-import { MyContext } from './components/mycontext';
+import { MyContext } from './mycontext';
 
 const defaultValue = {
   accounts: {}
