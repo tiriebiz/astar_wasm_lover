@@ -6,7 +6,11 @@ const defaultValue = {
   accounts: {}
 };
 
-export function Providers({ children }) {
+export function Providers({ 
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <MyContext.Provider value={ defaultValue }>
       {children}
