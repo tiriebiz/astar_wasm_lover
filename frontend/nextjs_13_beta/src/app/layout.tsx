@@ -17,6 +17,12 @@ export default function RootLayout({
     <Providers>
       {children}
     </Providers>
+    <footer className="disclaimer">
+      <p>
+        This dApp is not Astar Network official. It was created by an individual.<br />
+        Contracts have not been audited. Please DYOR when using.
+      </p>
+    </footer>
   </body>
 </html>
   )

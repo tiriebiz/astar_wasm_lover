@@ -46,6 +46,8 @@
     width: 100%;
     padding: 5rem 2rem 2rem;
     position: relative;
+    display: flex;
+    flex-direction: column-reverse;
     .btn_right {
       position: absolute;
       top: 0;
